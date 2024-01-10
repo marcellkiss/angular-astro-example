@@ -1,45 +1,44 @@
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { Component, Input, inject } from "@angular/core";
+import { AngularExampleService } from "./angular-example.service";
 import { ButtonComponent } from "./button.component";
-import { HeaderService } from "./header.service";
 
 @Component({
   selector: "app-header",
   standalone: true,
   imports: [HttpClientModule, ButtonComponent],
   template: `<div>
-    <p>This is an Angular based Header Component</p>
-    <h1>{{ title }}</h1>
+    <h1>Angular Example</h1>
+    <h3>{{ subtitle }}</h3>
     <p>New Blog Post</p>
     <app-button (customClick)="onClick()"></app-button>
   </div>`,
   styles: `
     :host {
-      color: white;
       display: block;
       border: 1px solid red;
       padding: 10px;
     }
   `,
 })
-export class HeaderComponent {
-  @Input() title = "Default Title";
+export class AngularExampleComponent {
+  @Input() subtitle = "Default Subtitle";
   #http = inject(HttpClient);
 
   constructor() {
-    console.log("HeaderComponent constructor");
+    console.log("AngularExampleComponent constructor");
     this.#http
       .get("https://jsonplaceholder.typicode.com/todos/1")
       .subscribe((data: any) => {
         console.log(data);
       });
 
-    inject(HeaderService).click$.subscribe(() => {
-      console.log("Header Button Click Received");
+    inject(AngularExampleService).click$.subscribe(() => {
+      console.log("Click in AngularExampleComponent");
     });
   }
 
   onClick() {
-    console.log("Header Button Clicked");
+    // console.log("Header Button Clicked");
   }
 }

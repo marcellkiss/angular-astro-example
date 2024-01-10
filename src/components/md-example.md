@@ -1,4 +1,4 @@
-# MD Test
+# MD Example
 
 Simple text
 

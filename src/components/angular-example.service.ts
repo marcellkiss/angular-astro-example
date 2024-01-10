@@ -4,6 +4,6 @@ import { BehaviorSubject } from "rxjs";
 @Injectable({
   providedIn: "root",
 })
-export class HeaderService {
+export class AngularExampleService {
   click$ = new BehaviorSubject<void>(undefined);
 }
