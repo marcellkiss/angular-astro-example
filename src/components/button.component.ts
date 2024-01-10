@@ -1,5 +1,5 @@
 import { Component, inject } from "@angular/core";
-import { AngularExampleService } from "./angular-example.service";
+import { ButtonService } from "./button.service";
 
 @Component({
   selector: "app-button",
@@ -8,16 +8,16 @@ import { AngularExampleService } from "./angular-example.service";
     (click)="onClick()"
     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
   >
-    Click Me
+    Load data
   </button>`,
 })
 export class ButtonComponent {
-  #angularExampleService = inject(AngularExampleService);
+  #buttonService = inject(ButtonService);
   // @Output() customClick = new EventEmitter<void>();
 
   onClick() {
     console.log("Click in ButtonComponent");
-    this.#angularExampleService.click$.next();
+    this.#buttonService.click$.next();
     // this.customClick.emit();
   }
 }
